@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DANT STORE — Streetwear &amp; Moda Urbana | Drop 01</title>
+  <meta name="description" content="DANT STORE — Streetwear autêntico, peças oversized, cargo e moletons heavyweight. Promoção de lançamento com até 40% OFF e frete grátis acima de R$ 299." />
+
+  <!-- Google Fonts: Syne, Oswald e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuração de Design Tokens da DANT STORE -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dant: {
+              bg: '#0d0d0d',
+              surface: '#1a1a1a',
+              surfaceHover: '#222222',
+              border: '#2a2a2a',
+              neon: '#ccff00',
+              neonDark: '#b3e600',
+              muted: '#a3a3a3',
+            },
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            oswald: ['Oswald', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Animação Marquee contínua para a Top Bar */
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 24s linear infinite;
+    }
+
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Scrollbar customizada para Dark Mode */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0d0d0d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a2a;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ccff00;
+    }
+
+    /* Esconder scrollbar em barras horizontais mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-dant-bg text-white font-inter antialiased selection:bg-dant-neon selection:text-black overflow-x-hidden">
+
+  <!-- ===================================================================== -->
+  <!-- 1. BARRA DE ANÚNCIOS (TOP BAR) COM MARQUEE CONTÍNUO                   -->
+  <!-- ===================================================================== -->
+  <div class="bg-dant-neon text-black overflow-hidden py-2 border-b border-black/20 relative z-50">
+    <div class="animate-marquee flex items-center whitespace-nowrap font-oswald font-bold text-xs sm:text-sm tracking-widest uppercase">
+      <span class="mx-6">🔥 PROMOÇÃO DE LANÇAMENTO DANT STORE — ATÉ 40% OFF + FRETE GRÁTIS ACIMA DE R$ 299 🔥</span>
+      <span class="mx-6">🔥 PROMOÇÃO DE LANÇAMENTO DANT STORE — ATÉ 40% OFF + FRETE GRÁTIS ACIMA DE R$ 299 🔥</span>
+      <span class="mx-6">🔥 PROMOÇÃO DE LANÇAMENTO DANT STORE — ATÉ 40% OFF + FRETE GRÁTIS ACIMA DE R$ 299 🔥</span>
+      <span class="mx-6">🔥 PROMOÇÃO DE LANÇAMENTO DANT STORE — ATÉ 40% OFF + FRETE GRÁTIS ACIMA DE R$ 299 🔥</span>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. HEADER / NAVBAR STICKY COM FILTROS E CARRINHO                      -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-dant-bg/85 backdrop-blur-md border-b border-dant-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20 gap-4">
+
+        <!-- Botão Menu Mobile + Logo -->
+        <div class="flex items-center gap-3">
+          <button
+            id="mobileMenuBtn"
+            type="button"
+            aria-label="Abrir menu de categorias"
+            class="lg:hidden p-2.5 rounded-lg bg-dant-surface border border-dant-border text-white hover:border-dant-neon hover:text-dant-neon transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <a href="#topo" onclick="setCategory('Todos')" class="group flex items-center gap-2 focus:outline-none">
+            <span class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-dant-neon text-black font-syne font-extrabold text-lg tracking-tighter group-hover:rotate-3 transition-transform">
+              D
+            </span>
+            <div class="flex flex-col leading-none">
+              <span class="font-syne font-extrabold text-lg sm:text-xl tracking-wider uppercase text-white">
+                DANT<span class="text-dant-neon">.</span>STORE
+              </span>
+              <span class="text-[9px] font-oswald tracking-[0.25em] text-dant-muted uppercase">
+                STREETWEAR CO.
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navegação Desktop (Filtros Rápidos) -->
+        <nav aria-label="Categorias principais" class="hidden lg:flex items-center gap-1 xl:gap-2">
+          <button data-nav-cat="Todos" onclick="navigateToCategory('Todos')" class="nav-cat-btn px-3.5 py-2 rounded-lg text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+            Todos
+          </button>
+          <button data-nav-cat="Promoções" onclick="navigateToCategory('Promoções')" class="nav-cat-btn px-3.5 py-2 rounded-lg text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+            🔥 Promoções
+          </button>
+          <button data-nav-cat="Camisetas" onclick="navigateToCategory('Camisetas')" class="nav-cat-btn px-3.5 py-2 rounded-lg text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+            Camisetas
+          </button>
+          <button data-nav-cat="Blusões" onclick="navigateToCategory('Blusões')" class="nav-cat-btn px-3.5 py-2 rounded-lg text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+            Blusões
+          </button>
+          <button data-nav-cat="Calças" onclick="navigateToCategory('Calças')" class="nav-cat-btn px-3.5 py-2 rounded-lg text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+            Calças
+          </button>
+          <button data-nav-cat="Bermudas" onclick="navigateToCategory('Bermudas')" class="nav-cat-btn px-3.5 py-2 rounded-lg text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+            Bermudas
+          </button>
+        </nav>
+
+        <!-- Ações à Direita: Carrinho -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button
+            id="openCartBtn"
+            type="button"
+            aria-label="Abrir carrinho de compras"
+            class="relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-dant-surface border border-dant-border hover:border-dant-neon text-white transition-all group"
+          >
+            <svg class="w-5 h-5 text-white group-hover:text-dant-neon transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span class="hidden sm:inline font-oswald text-xs uppercase tracking-widest font-semibold">
+              Sacola
+            </span>
+            <span
+              id="cartBadge"
+              class="inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full bg-dant-neon text-black font-inter font-bold text-xs transition-transform"
+            >
+              0
+            </span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menu Mobile Expansível -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-dant-border bg-dant-surface/95 backdrop-blur-lg">
+      <div class="px-4 py-4 grid grid-cols-2 gap-2">
+        <button data-nav-cat="Todos" onclick="navigateToCategory('Todos', true)" class="nav-cat-btn text-left px-4 py-3 rounded-xl text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+          Todos os Produtos
+        </button>
+        <button data-nav-cat="Promoções" onclick="navigateToCategory('Promoções', true)" class="nav-cat-btn text-left px-4 py-3 rounded-xl text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+          🔥 Promoções
+        </button>
+        <button data-nav-cat="Camisetas" onclick="navigateToCategory('Camisetas', true)" class="nav-cat-btn text-left px-4 py-3 rounded-xl text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+          Camisetas
+        </button>
+        <button data-nav-cat="Blusões" onclick="navigateToCategory('Blusões', true)" class="nav-cat-btn text-left px-4 py-3 rounded-xl text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+          Blusões
+        </button>
+        <button data-nav-cat="Calças" onclick="navigateToCategory('Calças', true)" class="nav-cat-btn text-left px-4 py-3 rounded-xl text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+          Calças
+        </button>
+        <button data-nav-cat="Bermudas" onclick="navigateToCategory('Bermudas', true)" class="nav-cat-btn text-left px-4 py-3 rounded-xl text-xs font-oswald font-semibold uppercase tracking-widest transition-all">
+          Bermudas
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 3. HERO SECTION (BANNER PRINCIPAL)                                    -->
+  <!-- ===================================================================== -->
+  <section id="topo" class="relative overflow-hidden border-b border-dant-border">
+    <!-- Imagem de Fundo Streetwear com Fallback -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1920&q=85"
+        alt="Coleção Streetwear DANT STORE"
+        onerror="this.src='https://placehold.co/1920x1080/111111/ccff00?text=DANT+STORE+DROP+01'"
+        class="w-full h-full object-cover object-center opacity-55 scale-105"
+      />
+      <!-- Overlays Gradientes Escuros para Máximo Contraste -->
+      <div class="absolute inset-0 bg-gradient-to-r from-dant-bg via-dant-bg/85 to-dant-bg/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-dant-bg via-transparent to-dant-bg/40"></div>
+    </div>
+
+    <!-- Conteúdo do Hero -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
+      <div class="max-w-2xl">
+        <!-- Badge de Coleção -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dant-surface/90 border border-dant-neon/40 backdrop-blur-sm mb-6">
+          <span class="w-2 h-2 rounded-full bg-dant-neon animate-pulse"></span>
+          <span class="font-oswald text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-dant-neon">
+            NOVA COLEÇÃO 2026 // DROP 01
+          </span>
+        </div>
+
+        <!-- Título Impactante -->
+        <h1 class="font-syne font-extrabold text-4xl sm:text-6xl lg:text-7xl uppercase leading-[0.98] tracking-tight text-white mb-6">
+          VISTA A RUA.<br />
+          <span class="text-dant-neon">DOMINE O CAOS.</span>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="text-dant-muted text-base sm:text-lg max-w-xl leading-relaxed mb-8">
+          Modelagens <span class="text-white font-medium">oversized heavyweight</span>, estética urbana crua e acabamento premium. Aproveite o lançamento da DANT STORE com <span class="text-dant-neon font-semibold">até 40% OFF</span> em peças selecionadas.
+        </p>
+
+        <!-- Botões CTA -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <button
+            type="button"
+            onclick="navigateToCategory('Promoções')"
+            class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-dant-neon hover:bg-dant-neonDark text-black font-oswald font-bold text-base uppercase tracking-widest transition-all shadow-[0_0_25px_rgba(204,255,0,0.3)] hover:shadow-[0_0_35px_rgba(204,255,0,0.5)] active:scale-[0.98]"
+          >
+            VER OFERTAS
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onclick="navigateToCategory('Todos')"
+            class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-dant-surface/80 hover:bg-dant-surface border border-dant-border hover:border-white/40 text-white font-oswald font-semibold text-base uppercase tracking-widest backdrop-blur-sm transition-all active:scale-[0.98]"
+          >
+            EXPLORAR CATÁLOGO
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- FAIXA DE BENEFÍCIOS                                                   -->
+  <!-- ===================================================================== -->
+  <section class="bg-dant-surface border-b border-dant-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+
+        <!-- Benefício 1 -->
+        <div class="flex items-center gap-3.5 p-3 rounded-xl bg-dant-bg/60 border border-dant-border/70">
+          <div class="w-11 h-11 rounded-lg bg-dant-neon/10 border border-dant-neon/30 flex items-center justify-center text-dant-neon shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-oswald font-semibold text-sm uppercase tracking-wider text-white">Frete Grátis</p>
+            <p class="text-xs text-dant-muted">Acima de R$ 299 para todo Brasil</p>
+          </div>
+        </div>
+
+        <!-- Benefício 2 -->
+        <div class="flex items-center gap-3.5 p-3 rounded-xl bg-dant-bg/60 border border-dant-border/70">
+          <div class="w-11 h-11 rounded-lg bg-dant-neon/10 border border-dant-neon/30 flex items-center justify-center text-dant-neon shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-oswald font-semibold text-sm uppercase tracking-wider text-white">Até 6x Sem Juros</p>
+            <p class="text-xs text-dant-muted">Parcelamento nos principais cartões</p>
+          </div>
+        </div>
+
+        <!-- Benefício 3 -->
+        <div class="flex items-center gap-3.5 p-3 rounded-xl bg-dant-bg/60 border border-dant-border/70">
+          <div class="w-11 h-11 rounded-lg bg-dant-neon/10 border border-dant-neon/30 flex items-center justify-center text-dant-neon shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-oswald font-semibold text-sm uppercase tracking-wider text-white">5% OFF no Pix</p>
+            <p class="text-xs text-dant-muted">Aprovação imediata e desconto extra</p>
+          </div>
+        </div>
+
+        <!-- Benefício 4 -->
+        <div class="flex items-center gap-3.5 p-3 rounded-xl bg-dant-bg/60 border border-dant-border/70">
+          <div class="w-11 h-11 rounded-lg bg-dant-neon/10 border border-dant-neon/30 flex items-center justify-center text-dant-neon shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-oswald font-semibold text-sm uppercase tracking-wider text-white">Troca Fácil</p>
+            <p class="text-xs text-dant-muted">Primeira troca grátis em até 30 dias</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. VITRINE DE PRODUTOS COM FILTRO DINÂMICO E ORDENAÇÃO                -->
+  <!-- ===================================================================== -->
+  <main id="vitrine" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+
+    <!-- Cabeçalho da Vitrine -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+      <div>
+        <p class="font-oswald text-xs uppercase tracking-[0.25em] text-dant-neon mb-2">
+          // CATÁLOGO OFICIAL
+        </p>
+        <h2 id="catalogHeading" class="font-syne font-extrabold text-3xl sm:text-4xl uppercase tracking-tight text-white">
+          DROP 01 — TODOS OS PRODUTOS
+        </h2>
+      </div>
+
+      <!-- Contagem e Ordenação -->
+      <div class="flex flex-wrap items-center justify-between md:justify-end gap-3">
+        <span id="productCount" class="text-xs sm:text-sm text-dant-muted font-medium">
+          12 peças encontradas
+        </span>
+
+        <div class="flex items-center gap-2">
+          <label for="sortSelect" class="text-xs text-dant-muted uppercase font-oswald tracking-wider">
+            Ordenar:
+          </label>
+          <select
+            id="sortSelect"
+            onchange="setSort(this.value)"
+            class="bg-dant-surface border border-dant-border text-white text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-dant-neon cursor-pointer"
+          >
+            <option value="featured">Destaques</option>
+            <option value="price-asc">Menor Preço</option>
+            <option value="discount-desc">Maior Desconto</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Filtros Rápidos (Sincronizada com o Header) -->
+    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-8 border-b border-dant-border">
+      <button data-filter-cat="Todos" onclick="setCategory('Todos')" class="filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all">
+        Todos
+      </button>
+      <button data-filter-cat="Promoções" onclick="setCategory('Promoções')" class="filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all">
+        🔥 Promoções
+      </button>
+      <button data-filter-cat="Camisetas" onclick="setCategory('Camisetas')" class="filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all">
+        Camisetas
+      </button>
+      <button data-filter-cat="Blusões" onclick="setCategory('Blusões')" class="filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all">
+        Blusões
+      </button>
+      <button data-filter-cat="Calças" onclick="setCategory('Calças')" class="filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all">
+        Calças
+      </button>
+      <button data-filter-cat="Bermudas" onclick="setCategory('Bermudas')" class="filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all">
+        Bermudas
+      </button>
+    </div>
+
+    <!-- Grid de Produtos (Renderizado via JavaScript) -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Cards inseridos dinamicamente -->
+    </div>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 5. CARRINHO DE COMPRAS LATERAL (DRAWER / MODAL)                       -->
+  <!-- ===================================================================== -->
+  <!-- Backdrop Escuro -->
+  <div
+    id="cartBackdrop"
+    onclick="closeCart()"
+    class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"
+  ></div>
+
+  <!-- Painel Lateral do Carrinho -->
+  <aside
+    id="cartDrawer"
+    aria-label="Carrinho de compras"
+    class="fixed top-0 right-0 h-full w-full max-w-md bg-dant-bg border-l border-dant-border z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col shadow-2xl"
+  >
+    <!-- Header do Carrinho -->
+    <div class="flex items-center justify-between px-5 py-4 border-b border-dant-border bg-dant-surface">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-dant-neon"></span>
+        <h3 class="font-syne font-extrabold text-lg uppercase tracking-wider text-white">
+          Sua Sacola
+        </h3>
+        <span id="cartDrawerCount" class="text-xs font-oswald uppercase tracking-wider text-dant-muted">
+          (0 itens)
+        </span>
+      </div>
+      <button
+        type="button"
+        onclick="closeCart()"
+        aria-label="Fechar carrinho"
+        class="p-2 rounded-lg bg-dant-bg border border-dant-border text-dant-muted hover:text-white hover:border-dant-neon transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Barra de Progresso de Frete Grátis -->
+    <div class="px-5 py-3.5 bg-dant-surface/60 border-b border-dant-border">
+      <p id="freeShippingText" class="text-xs font-medium text-white mb-2">
+        Adicione R$ 299,00 para ganhar <span class="text-dant-neon font-bold">FRETE GRÁTIS</span>!
+      </p>
+      <div class="w-full h-2 bg-dant-bg rounded-full overflow-hidden border border-dant-border">
+        <div
+          id="freeShippingBar"
+          class="h-full bg-dant-neon rounded-full transition-all duration-500"
+          style="width: 0%;"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Lista de Itens do Carrinho -->
+    <div id="cartItemsContainer" class="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+      <!-- Renderizado dinamicamente -->
+    </div>
+
+    <!-- Resumo e Botão WhatsApp -->
+    <div id="cartFooter" class="border-t border-dant-border bg-dant-surface p-5 space-y-4">
+      <div class="space-y-2 text-sm">
+        <div class="flex items-center justify-between text-dant-muted">
+          <span>Subtotal</span>
+          <span id="cartSubtotal" class="text-white font-semibold">R$ 0,00</span>
+        </div>
+        <div class="flex items-center justify-between text-dant-muted">
+          <span>Frete</span>
+          <span id="cartShippingStatus" class="text-white font-medium">A calcular</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-dant-neon/90 pt-1">
+          <span>No Pix (5% OFF)</span>
+          <span id="cartPixTotal" class="font-bold">R$ 0,00</span>
+        </div>
+      </div>
+
+      <button
+        id="whatsappCheckoutBtn"
+        type="button"
+        onclick="checkoutWhatsApp()"
+        class="w-full py-4 px-5 rounded-xl bg-dant-neon hover:bg-dant-neonDark text-black font-oswald font-bold text-base uppercase tracking-widest flex items-center justify-center gap-2.5 transition-all shadow-[0_0_20px_rgba(204,255,0,0.25)] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        <!-- Ícone WhatsApp SVG -->
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.344-1.766-.656-3.094-1.344-5.109-4.469-5.266-4.672-.156-.203-1.266-1.688-1.266-3.219 0-1.531.797-2.281 1.078-2.594.281-.313.625-.391.828-.391.203 0 .422.016.609.016.188 0 .453-.078.703.531.266.625.891 2.172.969 2.328.078.156.125.344.031.547-.094.203-.156.344-.313.516-.156.172-.328.391-.469.516-.156.156-.313.328-.141.641.172.313.781 1.297 1.672 2.094 1.156 1.031 2.125 1.359 2.438 1.516.313.156.484.125.672-.078.188-.203.781-.906.984-1.219.203-.313.422-.266.703-.156.281.109 1.797.844 2.109 1 .313.156.516.234.594.359.078.141.078.797-.172 1.5z"/>
+        </svg>
+        Finalizar Pedido no WhatsApp
+      </button>
+
+      <button
+        type="button"
+        onclick="clearCart()"
+        id="clearCartBtn"
+        class="w-full py-2 text-xs text-dant-muted hover:text-red-400 transition-colors uppercase font-oswald tracking-widest"
+      >
+        Limpar sacola
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================================================================== -->
+  <!-- 6. RODAPÉ (FOOTER)                                                    -->
+  <!-- ===================================================================== -->
+  <footer class="bg-dant-surface border-t border-dant-border mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+        <!-- Coluna 1: Marca e Manifesto -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-dant-neon text-black font-syne font-extrabold text-base">
+              D
+            </span>
+            <span class="font-syne font-extrabold text-xl tracking-wider uppercase text-white">
+              DANT<span class="text-dant-neon">.</span>STORE
+            </span>
+          </div>
+          <p class="text-sm text-dant-muted leading-relaxed">
+            Nascida no asfalto, feita para quem não segue padrões. Peças exclusivas em gramatura pesada, cortes modernos e identidade urbana autêntica.
+          </p>
+          <!-- Redes Sociais -->
+          <div class="flex items-center gap-2.5 pt-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-dant-bg border border-dant-border flex items-center justify-center text-dant-muted hover:text-dant-neon hover:border-dant-neon transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-dant-bg border border-dant-border flex items-center justify-center text-dant-muted hover:text-dant-neon hover:border-dant-neon transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" class="w-10 h-10 rounded-xl bg-dant-bg border border-dant-border flex items-center justify-center text-dant-muted hover:text-dant-neon hover:border-dant-neon transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-dant-bg border border-dant-border flex items-center justify-center text-dant-muted hover:text-dant-neon hover:border-dant-neon transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Links Institucionais -->
+        <div>
+          <h4 class="font-oswald font-bold text-sm uppercase tracking-widest text-white mb-4">
+            Institucional
+          </h4>
+          <ul class="space-y-2.5 text-sm text-dant-muted">
+            <li>
+              <button type="button" onclick="openInfoModal('sobre')" class="hover:text-dant-neon transition-colors">
+                Sobre Nós
+              </button>
+            </li>
+            <li>
+              <button type="button" onclick="openInfoModal('trocas')" class="hover:text-dant-neon transition-colors">
+                Política de Trocas
+              </button>
+            </li>
+            <li>
+              <button type="button" onclick="openInfoModal('envios')" class="hover:text-dant-neon transition-colors">
+                Envios e Prazos
+              </button>
+            </li>
+            <li>
+              <button type="button" onclick="openInfoModal('tamanhos')" class="hover:text-dant-neon transition-colors">
+                Guia de Tamanhos
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Categorias -->
+        <div>
+          <h4 class="font-oswald font-bold text-sm uppercase tracking-widest text-white mb-4">
+            Categorias
+          </h4>
+          <ul class="space-y-2.5 text-sm text-dant-muted">
+            <li><button type="button" onclick="navigateToCategory('Promoções')" class="hover:text-dant-neon transition-colors">Ofertas &amp; Promoções</button></li>
+            <li><button type="button" onclick="navigateToCategory('Camisetas')" class="hover:text-dant-neon transition-colors">Camisetas Oversized</button></li>
+            <li><button type="button" onclick="navigateToCategory('Blusões')" class="hover:text-dant-neon transition-colors">Blusões &amp; Hoodies</button></li>
+            <li><button type="button" onclick="navigateToCategory('Calças')" class="hover:text-dant-neon transition-colors">Calças Cargo &amp; Baggy</button></li>
+            <li><button type="button" onclick="navigateToCategory('Bermudas')" class="hover:text-dant-neon transition-colors">Bermudas Street</button></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Formas de Pagamento -->
+        <div>
+          <h4 class="font-oswald font-bold text-sm uppercase tracking-widest text-white mb-4">
+            Formas de Pagamento
+          </h4>
+          <p class="text-xs text-dant-muted mb-4">
+            Checkout seguro com atendimento personalizado via WhatsApp.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg bg-dant-bg border border-dant-neon/40 text-dant-neon font-oswald font-bold text-xs tracking-wider uppercase">
+              PIX (-5%)
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-dant-bg border border-dant-border text-white font-oswald font-semibold text-xs tracking-wider uppercase">
+              VISA
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-dant-bg border border-dant-border text-white font-oswald font-semibold text-xs tracking-wider uppercase">
+              MASTERCARD
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-dant-bg border border-dant-border text-white font-oswald font-semibold text-xs tracking-wider uppercase">
+              ELO
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-dant-bg border border-dant-border text-white font-oswald font-semibold text-xs tracking-wider uppercase">
+              BOLETO
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Linha de Copyright -->
+      <div class="mt-12 pt-6 border-t border-dant-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-dant-muted">
+        <p>© 2026 DANT STORE. Todos os direitos reservados.</p>
+        <p class="font-oswald uppercase tracking-widest text-[11px]">
+          DESIGNED FOR THE STREETS // <span class="text-dant-neon">DROP 01</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL INSTITUCIONAL (GUIA DE TAMANHOS, TROCAS, ETC.)                  -->
+  <!-- ===================================================================== -->
+  <div id="infoModalBackdrop" onclick="closeInfoModal()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div onclick="event.stopPropagation()" class="bg-dant-surface border border-dant-border rounded-2xl max-w-lg w-full p-6 shadow-2xl">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-dant-border">
+        <h3 id="infoModalTitle" class="font-syne font-extrabold text-xl uppercase text-white"></h3>
+        <button type="button" onclick="closeInfoModal()" aria-label="Fechar janela" class="p-1.5 rounded-lg bg-dant-bg text-dant-muted hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="infoModalContent" class="text-sm text-dant-muted space-y-3 leading-relaxed"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- CONTAINER DE NOTIFICAÇÕES TOAST                                       -->
+  <!-- ===================================================================== -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-xs w-[calc(100%-2.5rem)] pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- LÓGICA JAVASCRIPT PURA (VANILLA JS)                                   -->
+  <!-- ===================================================================== -->
+  <script>
+    // =========================================================================
+    // CONFIGURAÇÕES PRINCIPAIS DA LOJA (FÁCIL ALTERAÇÃO)
+    // =========================================================================
+
+    // Altere para o número de WhatsApp da sua loja (DDI + DDD + Número, somente dígitos)
+    const WHATSAPP_NUMBER = '5511999999999';
+
+    // Valor mínimo para ganhar Frete Grátis (em Reais)
+    const FREE_SHIPPING_THRESHOLD = 299.00;
+
+    // Chave utilizada no localStorage para persistir o carrinho
+    const CART_STORAGE_KEY = 'dant_store_cart_v1';
+
+    // =========================================================================
+    // CATÁLOGO INICIAL DE PRODUTOS (12 PEÇAS — 3 POR CATEGORIA)
+    // =========================================================================
+    const PRODUCTS = [
+      // --- CAMISETAS (3) ---
+      {
+        id: 'cam-01',
+        name: 'Camiseta Oversized Heavyweight Chaos',
+        category: 'Camisetas',
+        originalPrice: 179.90,
+        price: 116.90, // ~35% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',
+        description: 'Algodão 280g/m², gola canelada grossa e estampa nas costas.'
+      },
+      {
+        id: 'cam-02',
+        name: 'Camiseta Boxy Graphic Cyber',
+        category: 'Camisetas',
+        originalPrice: 159.90,
+        price: 111.90, // ~30% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80',
+        description: 'Modelagem boxy quadrada com silk screen de alta definição.'
+      },
+      {
+        id: 'cam-03',
+        name: 'Camiseta Estonada Street Acid',
+        category: 'Camisetas',
+        originalPrice: 149.90,
+        price: 149.90, // Lançamento / New Drop
+        isPromo: false,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
+        description: 'Lavagem estonada exclusiva com toque macio e caimento solto.'
+      },
+
+      // --- BLUSÕES (3) ---
+      {
+        id: 'blu-01',
+        name: 'Hoodie Oversized Dant Core',
+        category: 'Blusões',
+        originalPrice: 349.90,
+        price: 209.90, // ~40% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80',
+        description: 'Moletom 3 cabos 400g/m², capuz duplo sem cordão e bolso canguru.'
+      },
+      {
+        id: 'blu-02',
+        name: 'Moletom Careca Heavy Graffiti',
+        category: 'Blusões',
+        originalPrice: 299.90,
+        price: 209.90, // ~30% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80',
+        description: 'Gola careca estruturada com bordado frontal em alto relevo.'
+      },
+      {
+        id: 'blu-03',
+        name: 'Blusão Canguru Urban Tech',
+        category: 'Blusões',
+        originalPrice: 329.90,
+        price: 247.40, // ~25% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=800&q=80',
+        description: 'Recortes anatômicos estilo techwear e acabamento felpado.'
+      },
+
+      // --- CALÇAS (3) ---
+      {
+        id: 'cal-01',
+        name: 'Calça Cargo Parachute Tactical',
+        category: 'Calças',
+        originalPrice: 289.90,
+        price: 188.40, // ~35% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',
+        description: 'Nylon leve repelente à água com reguladores na barra e 6 bolsos.'
+      },
+      {
+        id: 'cal-02',
+        name: 'Calça Baggy Jeans Raw Wash',
+        category: 'Calças',
+        originalPrice: 279.90,
+        price: 209.90, // ~25% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80',
+        description: 'Denim 100% algodão 14oz, perna ampla e costuras contrastantes.'
+      },
+      {
+        id: 'cal-03',
+        name: 'Calça Moletom Wide Leg Heavy',
+        category: 'Calças',
+        originalPrice: 249.90,
+        price: 249.90, // Lançamento / New Drop
+        isPromo: false,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80',
+        description: 'Corte wide leg reto com barra aberta e cós elástico reforçado.'
+      },
+
+      // --- BERMUDAS (3) ---
+      {
+        id: 'ber-01',
+        name: 'Bermuda Cargo Ripstop Utility',
+        category: 'Bermudas',
+        originalPrice: 199.90,
+        price: 139.90, // ~30% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=800&q=80',
+        description: 'Tecido ripstop ultra resistente com bolsos laterais volumosos.'
+      },
+      {
+        id: 'ber-02',
+        name: 'Bermuda Moletom Oversized Raw',
+        category: 'Bermudas',
+        originalPrice: 169.90,
+        price: 101.90, // ~40% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?auto=format&fit=crop&w=800&q=80',
+        description: 'Comprimento abaixo do joelho com acabamento em corte a fio.'
+      },
+      {
+        id: 'ber-03',
+        name: 'Bermuda Jorts Jeans Baggy',
+        category: 'Bermudas',
+        originalPrice: 219.90,
+        price: 175.90, // ~20% OFF
+        isPromo: true,
+        sizes: ['P', 'M', 'G', 'GG'],
+        image: 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=80',
+        description: 'Clássico jorts streetwear anos 90 com lavagem estonada escura.'
+      }
+    ];
+
+    // =========================================================================
+    // ESTADO GLOBAL DA APLICAÇÃO
+    // =========================================================================
+    let activeCategory = 'Todos';
+    let activeSort = 'featured';
+    let selectedSizes = {}; // Armazena o tamanho escolhido por produto (padrão: 'M')
+    let cart = [];
+
+    // Inicializa tamanhos padrão ('M') para todos os produtos
+    PRODUCTS.forEach((p) => {
+      selectedSizes[p.id] = 'M';
+    });
+
+    // =========================================================================
+    // FUNÇÕES UTILITÁRIAS
+    // =========================================================================
+
+    /** Formata valores numéricos para moeda brasileira (BRL) */
+    function formatBRL(value) {
+      return value.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
+    }
+
+    /** Calcula a porcentagem real de desconto */
+    function getDiscountPercent(product) {
+      if (!product.isPromo || product.originalPrice <= product.price) return 0;
+      return Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+    }
+
+    /** Salva o carrinho no localStorage com tratamento de erro */
+    function saveCart() {
+      try {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      } catch (err) {
+        console.warn('Não foi possível salvar o carrinho no localStorage:', err);
+      }
+    }
+
+    /** Carrega o carrinho do localStorage com tratamento de erro */
+    function loadCart() {
+      try {
+        const stored = localStorage.getItem(CART_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            cart = parsed;
+          }
+        }
+      } catch (err) {
+        console.warn('Não foi possível ler o carrinho do localStorage:', err);
+        cart = [];
+      }
+    }
+
+    /** Exibe notificação Toast elegante no canto inferior direito */
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+
+      const accentBorder = type === 'success' ? 'border-dant-neon' : 'border-red-500';
+      const iconColor = type === 'success' ? 'text-dant-neon' : 'text-red-400';
+
+      toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3.5 rounded-xl bg-dant-surface border ${accentBorder} shadow-2xl transform translate-y-4 opacity-0 transition-all duration-300`;
+      toast.innerHTML = `
+        <span class="${iconColor} shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span class="text-xs sm:text-sm font-medium text-white leading-snug">${message}</span>
+      `;
+
+      container.appendChild(toast);
+
+      // Anima entrada
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      });
+
+      // Remove automaticamente após 3 segundos
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // =========================================================================
+    // FILTRAGEM, ORDENAÇÃO E RENDERIZAÇÃO DA VITRINE
+    // =========================================================================
+
+    function setCategory(category) {
+      activeCategory = category;
+      updateCategoryButtons();
+      renderProducts();
+    }
+
+    function navigateToCategory(category, closeMobile = false) {
+      setCategory(category);
+      if (closeMobile) {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      }
+      const vitrine = document.getElementById('vitrine');
+      if (vitrine) {
+        vitrine.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function setSort(sortValue) {
+      activeSort = sortValue;
+      renderProducts();
+    }
+
+    function selectProductSize(productId, size) {
+      selectedSizes[productId] = size;
+      // Atualiza visual apenas dos botões de tamanho do card específico
+      const buttons = document.querySelectorAll(`[data-size-group="${productId}"]`);
+      buttons.forEach((btn) => {
+        const isSelected = btn.getAttribute('data-size-value') === size;
+        if (isSelected) {
+          btn.className = 'w-9 h-9 rounded-lg text-xs font-oswald font-bold uppercase transition-all bg-dant-neon text-black border border-dant-neon';
+        } else {
+          btn.className = 'w-9 h-9 rounded-lg text-xs font-oswald font-semibold uppercase transition-all bg-dant-bg text-dant-muted border border-dant-border hover:border-white/50 hover:text-white';
+        }
+      });
+    }
+
+    function updateCategoryButtons() {
+      // Atualiza botões no Header (Desktop e Mobile)
+      document.querySelectorAll('.nav-cat-btn').forEach((btn) => {
+        const isMatch = btn.getAttribute('data-nav-cat') === activeCategory;
+        if (isMatch) {
+          btn.classList.add('bg-dant-neon', 'text-black');
+          btn.classList.remove('text-dant-muted', 'hover:text-white', 'hover:bg-dant-surface');
+        } else {
+          btn.classList.remove('bg-dant-neon', 'text-black');
+          btn.classList.add('text-dant-muted', 'hover:text-white', 'hover:bg-dant-surface');
+        }
+      });
+
+      // Atualiza pills de filtro acima da vitrine
+      document.querySelectorAll('.filter-pill').forEach((btn) => {
+        const isMatch = btn.getAttribute('data-filter-cat') === activeCategory;
+        if (isMatch) {
+          btn.className = 'filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-bold uppercase tracking-widest transition-all bg-dant-neon text-black border border-dant-neon';
+        } else {
+          btn.className = 'filter-pill shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-oswald font-semibold uppercase tracking-widest transition-all bg-dant-surface text-dant-muted border border-dant-border hover:border-white/40 hover:text-white';
+        }
+      });
+
+      // Atualiza título da vitrine
+      const heading = document.getElementById('catalogHeading');
+      const titles = {
+        'Todos': 'DROP 01 — TODOS OS PRODUTOS',
+        'Promoções': '🔥 OFERTAS DE LANÇAMENTO (ATÉ 40% OFF)',
+        'Camisetas': 'CAMISETAS OVERSIZED & BOXY',
+        'Blusões': 'BLUSÕES, MOLETONS & HOODIES',
+        'Calças': 'CALÇAS CARGO, BAGGY & WIDE LEG',
+        'Bermudas': 'BERMUDAS CARGO, MOLETOM & JORTS'
+      };
+      heading.textContent = titles[activeCategory] || activeCategory;
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const countEl = document.getElementById('productCount');
+
+      // 1. Filtra por categoria
+      let filtered = PRODUCTS.filter((product) => {
+        if (activeCategory === 'Todos') return true;
+        if (activeCategory === 'Promoções') return product.isPromo;
+        return product.category === activeCategory;
+      });
+
+      // 2. Ordena conforme escolha
+      if (activeSort === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (activeSort === 'discount-desc') {
+        filtered.sort((a, b) => getDiscountPercent(b) - getDiscountPercent(a));
+      }
+
+      // 3. Atualiza contador
+      countEl.textContent = `${filtered.length} ${filtered.length === 1 ? 'peça encontrada' : 'peças encontradas'}`;
+
+      // 4. Renderiza os cards
+      grid.innerHTML = filtered.map((product) => {
+        const discount = getDiscountPercent(product);
+        const currentSize = selectedSizes[product.id] || 'M';
+        const fallbackImg = `https://placehold.co/600x750/1a1a1a/ccff00?text=${encodeURIComponent(product.name)}`;
+
+        const badgeHTML = product.isPromo
+          ? `<span class="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-lg bg-dant-neon text-black font-oswald font-bold text-xs uppercase tracking-wider shadow-lg">-${discount}% OFF</span>`
+          : `<span class="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-lg bg-white text-black font-oswald font-bold text-xs uppercase tracking-wider shadow-lg">NEW DROP</span>`;
+
+        const priceHTML = product.isPromo
+          ? `
+            <div class="flex flex-col">
+              <span class="text-xs text-dant-muted line-through">De: ${formatBRL(product.originalPrice)}</span>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-xs text-dant-muted">Por:</span>
+                <span class="font-inter font-bold text-xl text-dant-neon">${formatBRL(product.price)}</span>
+              </div>
+            </div>
+          `
+          : `
+            <div class="flex flex-col">
+              <span class="text-xs text-dant-muted">Lançamento</span>
+              <span class="font-inter font-bold text-xl text-white">${formatBRL(product.price)}</span>
+            </div>
+          `;
+
+        const sizesHTML = product.sizes.map((size) => {
+          const isSelected = size === currentSize;
+          const btnClass = isSelected
+            ? 'w-9 h-9 rounded-lg text-xs font-oswald font-bold uppercase transition-all bg-dant-neon text-black border border-dant-neon'
+            : 'w-9 h-9 rounded-lg text-xs font-oswald font-semibold uppercase transition-all bg-dant-bg text-dant-muted border border-dant-border hover:border-white/50 hover:text-white';
+          return `
+            <button
+              type="button"
+              data-size-group="${product.id}"
+              data-size-value="${size}"
+              onclick="selectProductSize('${product.id}', '${size}')"
+              class="${btnClass}"
+            >
+              ${size}
+            </button>
+          `;
+        }).join('');
+
+        return `
+          <article class="group bg-dant-surface border border-dant-border hover:border-dant-neon/50 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1">
+            <!-- Imagem do Produto -->
+            <div class="relative aspect-[4/5] bg-dant-bg overflow-hidden">
+              ${badgeHTML}
+              <img
+                src="${product.image}"
+                alt="${product.name}"
+                loading="lazy"
+                onerror="this.src='${fallbackImg}'"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-dant-surface to-transparent opacity-70"></div>
+            </div>
+
+            <!-- Informações do Card -->
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between gap-4">
+              <div>
+                <p class="font-oswald text-[11px] uppercase tracking-[0.2em] text-dant-muted mb-1">
+                  ${product.category}
+                </p>
+                <h3 class="font-syne font-bold text-base sm:text-lg text-white leading-snug line-clamp-2 mb-1.5">
+                  ${product.name}
+                </h3>
+                <p class="text-xs text-dant-muted line-clamp-2 mb-3">
+                  ${product.description}
+                </p>
+                ${priceHTML}
+                <p class="text-[11px] text-dant-muted mt-1">
+                  ou 6x de ${formatBRL(product.price / 6)} sem juros
+                </p>
+              </div>
+
+              <!-- Seletor de Tamanho + Botão Comprar -->
+              <div class="space-y-3 pt-2 border-t border-dant-border/70">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-oswald uppercase tracking-widest text-dant-muted">Tamanho:</span>
+                  <div class="flex items-center gap-1.5">
+                    ${sizesHTML}
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onclick="addToCart('${product.id}', this)"
+                  class="w-full py-3 px-4 rounded-xl bg-white hover:bg-dant-neon text-black font-oswald font-bold text-sm uppercase tracking-widest transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                  </svg>
+                  Adicionar ao Carrinho
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // GERENCIAMENTO DO CARRINHO LATERAL
+    // =========================================================================
+
+    function addToCart(productId, btnElement) {
+      const product = PRODUCTS.find((p) => p.id === productId);
+      if (!product) return;
+
+      const size = selectedSizes[productId] || 'M';
+      const existingIndex = cart.findIndex((item) => item.id === productId && item.size === size);
+
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          size: size,
+          quantity: 1
+        });
+      }
+
+      saveCart();
+      renderCart();
+
+      // Feedback visual rápido no botão
+      if (btnElement) {
+        const originalHTML = btnElement.innerHTML;
+        btnElement.classList.remove('bg-white');
+        btnElement.classList.add('bg-dant-neon');
+        btnElement.innerHTML = '✓ ADICIONADO';
+        setTimeout(() => {
+          btnElement.innerHTML = originalHTML;
+          btnElement.classList.remove('bg-dant-neon');
+          btnElement.classList.add('bg-white');
+        }, 900);
+      }
+
+      // Pulso no badge do carrinho
+      const badge = document.getElementById('cartBadge');
+      badge.classList.add('scale-125');
+      setTimeout(() => badge.classList.remove('scale-125'), 250);
+
+      showToast(`<strong>${product.name}</strong> (Tam. ${size}) adicionado à sacola!`);
+    }
+
+    function updateCartQuantity(index, delta) {
+      if (!cart[index]) return;
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      if (!cart[index]) return;
+      const removedName = cart[index].name;
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+      showToast(`${removedName} removido da sacola.`, 'error');
+    }
+
+    function clearCart() {
+      if (cart.length === 0) return;
+      cart = [];
+      saveCart();
+      renderCart();
+      showToast('Sua sacola foi esvaziada.');
+    }
+
+    function renderCart() {
+      const itemsContainer = document.getElementById('cartItemsContainer');
+      const badge = document.getElementById('cartBadge');
+      const drawerCount = document.getElementById('cartDrawerCount');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const shippingEl = document.getElementById('cartShippingStatus');
+      const pixTotalEl = document.getElementById('cartPixTotal');
+      const freeShippingText = document.getElementById('freeShippingText');
+      const freeShippingBar = document.getElementById('freeShippingBar');
+      const checkoutBtn = document.getElementById('whatsappCheckoutBtn');
+      const clearBtn = document.getElementById('clearCartBtn');
+
+      const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      const pixTotal = subtotal * 0.95;
+
+      // Atualiza contadores
+      badge.textContent = totalItems;
+      drawerCount.textContent = `(${totalItems} ${totalItems === 1 ? 'item' : 'itens'})`;
+
+      // Atualiza barra de Frete Grátis
+      const progress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
+      freeShippingBar.style.width = `${progress}%`;
+
+      if (subtotal >= FREE_SHIPPING_THRESHOLD) {
+        freeShippingText.innerHTML = '🎉 Parabéns! Você ganhou <span class="text-dant-neon font-bold">FRETE GRÁTIS</span>!';
+        shippingEl.innerHTML = '<span class="text-dant-neon font-bold">GRÁTIS</span>';
+      } else {
+        const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+        freeShippingText.innerHTML = `Faltam <span class="text-dant-neon font-bold">${formatBRL(remaining)}</span> para ganhar <span class="text-white font-semibold">FRETE GRÁTIS</span>!`;
+        shippingEl.textContent = subtotal > 0 ? 'A calcular no WhatsApp' : '—';
+      }
+
+      subtotalEl.textContent = formatBRL(subtotal);
+      pixTotalEl.textContent = formatBRL(pixTotal);
+
+      // Estado vazio
+      if (cart.length === 0) {
+        checkoutBtn.disabled = true;
+        clearBtn.classList.add('hidden');
+        itemsContainer.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center py-14 px-4">
+            <div class="w-16 h-16 rounded-2xl bg-dant-surface border border-dant-border flex items-center justify-center text-dant-muted mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </div>
+            <p class="font-syne font-bold text-lg text-white uppercase mb-1">Sua sacola está vazia</p>
+            <p class="text-xs text-dant-muted max-w-xs mb-6">
+              Explore o Drop 01 e garanta suas peças com até 40% OFF no lançamento.
+            </p>
+            <button
+              type="button"
+              onclick="closeCart(); navigateToCategory('Promoções');"
+              class="px-6 py-3 rounded-xl bg-dant-neon text-black font-oswald font-bold text-xs uppercase tracking-widest hover:bg-dant-neonDark transition-colors"
+            >
+              Ver Ofertas
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      checkoutBtn.disabled = false;
+      clearBtn.classList.remove('hidden');
+
+      // Renderiza lista de itens
+      itemsContainer.innerHTML = cart.map((item, idx) => {
+        const fallbackImg = `https://placehold.co/120x150/1a1a1a/ccff00?text=DANT`;
+        return `
+          <div class="flex gap-3.5 p-3 rounded-xl bg-dant-surface border border-dant-border">
+            <img
+              src="${item.image}"
+              alt="${item.name}"
+              onerror="this.src='${fallbackImg}'"
+              class="w-20 h-24 rounded-lg object-cover bg-dant-bg shrink-0"
+            />
+            <div class="flex-1 min-w-0 flex flex-col justify-between">
+              <div>
+                <div class="flex items-start justify-between gap-2">
+                  <h4 class="font-syne font-bold text-sm text-white leading-tight line-clamp-2">
+                    ${item.name}
+                  </h4>
+                  <button
+                    type="button"
+                    onclick="removeFromCart(${idx})"
+                    aria-label="Remover ${item.name}"
+                    class="text-dant-muted hover:text-red-400 p-1 transition-colors shrink-0"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
+                </div>
+                <span class="inline-block mt-1 px-2 py-0.5 rounded bg-dant-bg border border-dant-border text-[11px] font-oswald uppercase tracking-wider text-dant-muted">
+                  Tam: <strong class="text-white">${item.size}</strong>
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between mt-3">
+                <span class="font-inter font-bold text-sm text-dant-neon">
+                  ${formatBRL(item.price * item.quantity)}
+                </span>
+
+                <div class="flex items-center gap-1 bg-dant-bg border border-dant-border rounded-lg p-0.5">
+                  <button
+                    type="button"
+                    onclick="updateCartQuantity(${idx}, -1)"
+                    aria-label="Diminuir quantidade"
+                    class="w-7 h-7 flex items-center justify-center rounded-md text-white hover:bg-dant-surface hover:text-dant-neon font-bold transition-colors"
+                  >
+                    −
+                  </button>
+                  <span class="w-7 text-center text-xs font-bold text-white">${item.quantity}</span>
+                  <button
+                    type="button"
+                    onclick="updateCartQuantity(${idx}, 1)"
+                    aria-label="Aumentar quantidade"
+                    class="w-7 h-7 flex items-center justify-center rounded-md text-white hover:bg-dant-surface hover:text-dant-neon font-bold transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openCart() {
+      const backdrop = document.getElementById('cartBackdrop');
+      const drawer = document.getElementById('cartDrawer');
+
+      backdrop.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        backdrop.classList.remove('opacity-0');
+        drawer.classList.remove('translate-x-full');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      const backdrop = document.getElementById('cartBackdrop');
+      const drawer = document.getElementById('cartDrawer');
+
+      backdrop.classList.add('opacity-0');
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    /** Monta a mensagem formatada e abre o WhatsApp */
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return;
+
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      const pixTotal = subtotal * 0.95;
+      const shippingStatus = subtotal >= FREE_SHIPPING_THRESHOLD
+        ? 'GRÁTIS 🎉 (Acima de R$ 299,00)'
+        : 'A combinar / calcular CEP';
+
+      let message = `🔥 *NOVO PEDIDO — DANT STORE* 🔥\n\n`;
+      message += `Olá! Gostaria de finalizar meu pedido com os itens abaixo:\n\n`;
+
+      cart.forEach((item, index) => {
+        message += `*${index + 1}. ${item.name}*\n`;
+        message += `   • Tamanho: ${item.size}\n`;
+        message += `   • Qtd: ${item.quantity}x ${formatBRL(item.price)} = *${formatBRL(item.price * item.quantity)}*\n\n`;
+      });
+
+      message += `────────────────────\n`;
+      message += `💰 *Subtotal:* ${formatBRL(subtotal)}\n`;
+      message += `⚡ *Total no Pix (5% OFF):* ${formatBRL(pixTotal)}\n`;
+      message += `🚚 *Frete:* ${shippingStatus}\n`;
+      message += `────────────────────\n\n`;
+      message += `Aguardo as instruções para pagamento e envio! 👊`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // =========================================================================
+    // MODAL INSTITUCIONAL (SOBRE, TROCAS, ENVIOS, GUIA DE TAMANHOS)
+    // =========================================================================
+    const INFO_CONTENT = {
+      sobre: {
+        title: 'Sobre a DANT STORE',
+        html: `
+          <p>A <strong class="text-white">DANT STORE</strong> nasceu da cultura urbana independente com o propósito de entregar peças streetwear de altíssima gramatura, modelagens amplas e design autoral.</p>
+          <p>Cada drop é produzido em tiragem limitada, priorizando algodão sustentável, costuras reforçadas e caimento impecável para o dia a dia na rua.</p>
+        `
+      },
+      trocas: {
+        title: 'Política de Trocas',
+        html: `
+          <p>Não serviu ou mudou de ideia? Sem estresse. A <strong class="text-dant-neon">primeira troca é totalmente grátis</strong> em até 30 dias corridos após o recebimento.</p>
+          <p>Basta entrar em contato pelo nosso WhatsApp informando o número do pedido. A peça deve estar sem sinais de uso e com a etiqueta original fixada.</p>
+        `
+      },
+      envios: {
+        title: 'Envios e Prazos',
+        html: `
+          <p>Enviamos para todo o Brasil via Correios (SEDEX/PAC) e transportadoras parceiras com código de rastreamento em tempo real.</p>
+          <p>Pedidos acima de <strong class="text-dant-neon">R$ 299,00</strong> contam com <strong class="text-white">Frete Grátis</strong>. Postagem em até 24h úteis após a confirmação do pagamento.</p>
+        `
+      },
+      tamanhos: {
+        title: 'Guia de Tamanhos (Oversized)',
+        html: `
+          <p>Nossas peças possuem modelagem <strong class="text-white">Oversized Streetwear</strong> (mais larga e levemente alongada). Escolha seu tamanho habitual para o caimento solto ideal:</p>
+          <div class="overflow-x-auto mt-3">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-dant-border text-dant-neon font-oswald uppercase tracking-wider">
+                  <th class="py-2">Tam</th>
+                  <th class="py-2">Largura (Peito)</th>
+                  <th class="py-2">Comprimento</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-dant-border/50 text-white">
+                <tr><td class="py-2 font-bold">P</td><td class="py-2">56 cm</td><td class="py-2">72 cm</td></tr>
+                <tr><td class="py-2 font-bold">M</td><td class="py-2">59 cm</td><td class="py-2">75 cm</td></tr>
+                <tr><td class="py-2 font-bold">G</td><td class="py-2">62 cm</td><td class="py-2">78 cm</td></tr>
+                <tr><td class="py-2 font-bold">GG</td><td class="py-2">65 cm</td><td class="py-2">81 cm</td></tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      }
+    };
+
+    function openInfoModal(key) {
+      const data = INFO_CONTENT[key];
+      if (!data) return;
+      document.getElementById('infoModalTitle').textContent = data.title;
+      document.getElementById('infoModalContent').innerHTML = data.html;
+      const modal = document.getElementById('infoModalBackdrop');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeInfoModal() {
+      const modal = document.getElementById('infoModalBackdrop');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // =========================================================================
+    // EVENT LISTENERS E INICIALIZAÇÃO
+    // =========================================================================
+    document.getElementById('openCartBtn').addEventListener('click', openCart);
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Fecha carrinho ou modal ao pressionar ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCart();
+        closeInfoModal();
+      }
+    });
+
+    // Inicializa a aplicação ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCart();
+      updateCategoryButtons();
+      renderProducts();
+      renderCart();
+    });
+  </script>
+</body>
+</html>
